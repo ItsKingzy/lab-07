@@ -29,8 +29,7 @@
         android:id="@+id/city_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:choiceMode="singleChoice"
-        android:listSelector="#999999">
+        android:choiceMode="singleChoice">
 
     </ListView>
 
