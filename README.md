@@ -7,8 +7,8 @@
 
 ## References and Resources
 
-N/A
-
+https://www.geeksforgeeks.org/android/what-is-intent-in-android/
+- Used to learn about Intent to display multiple activities
 ## Verbal Collaboration
 
 | Student Name | CCID     |
