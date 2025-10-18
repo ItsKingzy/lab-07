@@ -13,7 +13,10 @@ import static org.hamcrest.CoreMatchers.anything;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 
+import android.content.Intent;
+
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -80,6 +83,33 @@ public class MainActivityTest {
 
     @Test
     public void testShowActivity() {
-        return;
+        // Call testAddCity, which adds Edmonton to the list
+        testAddCity();
+        // Click on the Edmonton text on MainActivity
+        onView(withText("Edmonton")).perform(click());
+        // Check if ShowActivity is launched with the city set to Edmonton
+        onView(withText("Edmonton")).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testConsistentCityName() {
+        // Call testAddCity, which adds Edmonton to the list
+        testAddCity();
+        onView(withText("Edmonton")).perform(click());
+        // Test to see if the city name is displayed on the screen (Calgary)
+        onView(withText("Calgary")).check(doesNotExist());
+            // Should be Edmonton, not Calgary. Therefore the return result should be false
+    }
+
+    @Test
+    public void testBackButton() {
+        // Call testAddCity, which adds Edmonton to the list
+        testAddCity();
+        // Click on the Edmonton text on MainActivity
+        onView(withText("Edmonton")).perform(click());
+        // Perform a click on the back button
+        onView(withId(R.id.backButton)).perform(click());
+        // Check to see if the ShowActivity city id is gone (i.e., we have returned to MainActivity)
+        onView(withId(R.id.cityName)).check(doesNotExist());
     }
 }

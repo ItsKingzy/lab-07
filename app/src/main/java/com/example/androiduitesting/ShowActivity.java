@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ShowActivity extends MainActivity{
+public class ShowActivity extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
